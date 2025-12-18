@@ -1,0 +1,35 @@
+{
+  "name": "african-currency-platform",
+  "version": "1.0.0",
+  "description": "African Currency Exchange Platform - Monorepo",
+  "private": true,
+  "packageManager": "pnpm@10.18.3+sha512.bbd16e6d7286fd7e01f6b3c0b3c932cda2965c06a908328f74663f10a9aea51f1129eea615134bf992831b009eabe167ecb7008b597f40ff9bc75946aadfb08d",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "start": "pnpm -r start",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "backend:dev": "pnpm -C backend dev",
+    "backend:build": "pnpm -C backend build",
+    "backend:test": "pnpm -C backend test",
+    "frontend:dev": "pnpm -C frontend dev",
+    "frontend:build": "pnpm -C frontend build",
+    "frontend:test": "pnpm -C frontend test",
+    "setup-database": "tsx scripts/setup-database.ts",
+    "setup-fraud-detection": "cd frontend && node ../scripts/run-fraud-setup.js"
+  },
+  "keywords": [
+    "currency",
+    "exchange",
+    "africa",
+    "forex",
+    "fintech"
+  ],
+  "author": "African Currency Platform",
+  "license": "MIT"
+}

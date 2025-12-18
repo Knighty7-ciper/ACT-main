@@ -1,0 +1,532 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../styles/enhanced-design-system.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated theme to vibrant forex/governmental style with yellow/gold and pan-African colors */
+  --background: oklch(0.98 0.01 85);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.65 0.18 85); /* Gold/Yellow */
+  --primary-foreground: oklch(0.15 0 0);
+  --secondary: oklch(0.45 0.15 145); /* Green - Pan-African */
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.95 0.01 85);
+  --muted-foreground: oklch(0.5 0 0);
+  --accent: oklch(0.55 0.22 25); /* Red - Pan-African */
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.88 0.01 85);
+  --input: oklch(0.88 0.01 85);
+  --ring: oklch(0.65 0.18 85);
+  --chart-1: oklch(0.65 0.18 85); /* Gold */
+  --chart-2: oklch(0.45 0.15 145); /* Green */
+  --chart-3: oklch(0.55 0.22 25); /* Red */
+  --chart-4: oklch(0.15 0 0); /* Black */
+  --chart-5: oklch(0.5 0.12 265); /* Blue */
+  --radius: 0.5rem;
+  --sidebar: oklch(0.98 0.01 85);
+  --sidebar-foreground: oklch(0.15 0 0);
+  --sidebar-primary: oklch(0.65 0.18 85);
+  --sidebar-primary-foreground: oklch(0.15 0 0);
+  --sidebar-accent: oklch(0.95 0.01 85);
+  --sidebar-accent-foreground: oklch(0.15 0 0);
+  --sidebar-border: oklch(0.88 0.01 85);
+  --sidebar-ring: oklch(0.65 0.18 85);
+}
+
+.dark {
+  --background: oklch(0.12 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.18 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.18 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.75 0.18 85);
+  --primary-foreground: oklch(0.12 0 0);
+  --secondary: oklch(0.5 0.15 145);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.22 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.6 0.22 25);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.25 0 0);
+  --input: oklch(0.25 0 0);
+  --ring: oklch(0.75 0.18 85);
+  --chart-1: oklch(0.75 0.18 85);
+  --chart-2: oklch(0.5 0.15 145);
+  --chart-3: oklch(0.6 0.22 25);
+  --chart-4: oklch(0.85 0 0);
+  --chart-5: oklch(0.6 0.12 265);
+  --sidebar: oklch(0.15 0 0);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.75 0.18 85);
+  --sidebar-primary-foreground: oklch(0.12 0 0);
+  --sidebar-accent: oklch(0.22 0 0);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.25 0 0);
+  --sidebar-ring: oklch(0.75 0.18 85);
+}
+
+@theme inline {
+  /* Added font variables for 3 font styles */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Modern Binance-inspired theme variables and overrides */
+:root {
+  /* Primary Binance Colors */
+  --binance-gold: #f0b90b;
+  --binance-black: #0c0e12;
+  --binance-dark-gray: #1e2028;
+  --binance-medium-gray: #2B3139;
+  --binance-light-gray: #EAECEF;
+  --binance-green: #0ECB81;
+  --binance-red: #F6465D;
+  --binance-blue: #3375bb;
+  --binance-border: #2f3746;
+  
+  /* Modern gradients */
+  --binance-gradient: linear-gradient(135deg, #f0b90b 0%, #fcd535 100%);
+  --binance-dark-gradient: linear-gradient(135deg, #0c0e12 0%, #1e2028 100%);
+  
+  /* Typography */
+  --font-heading: 'Inter', 'IBM Plex Sans', sans-serif;
+  --font-body: 'Inter', 'Barlow', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Shadows and effects */
+  --binance-shadow: 0 2px 16px rgba(240, 185, 11, 0.1);
+  --binance-shadow-lg: 0 8px 32px rgba(240, 185, 11, 0.15);
+  --binance-blur: backdrop-filter: blur(10px);
+}
+
+.theme-binance {
+  /* Core theme */
+  --primary: var(--binance-gold);
+  --primary-foreground: var(--binance-black);
+  --background: var(--binance-black);
+  --foreground: var(--binance-light-gray);
+  --card: var(--binance-dark-gray);
+  --card-foreground: var(--binance-light-gray);
+  --border: var(--binance-border);
+  --input: var(--binance-medium-gray);
+  --secondary: var(--binance-medium-gray);
+  --secondary-foreground: var(--binance-light-gray);
+  --accent: var(--binance-gold);
+  --accent-foreground: var(--binance-black);
+  --destructive: var(--binance-red);
+  --destructive-foreground: var(--binance-light-gray);
+  --muted: var(--binance-medium-gray);
+  --muted-foreground: #8b949e;
+  --ring: var(--binance-gold);
+  
+  /* Charts */
+  --chart-1: var(--binance-gold);
+  --chart-2: var(--binance-green);
+  --chart-3: var(--binance-red);
+  --chart-4: var(--binance-blue);
+  --chart-5: var(--binance-medium-gray);
+}
+
+/* Modern Binance Layout System */
+.binance-layout {
+  min-height: 100vh;
+  background: var(--binance-dark-gradient);
+  color: var(--binance-light-gray);
+  font-family: var(--font-body);
+}
+
+.binance-header {
+  background: rgba(12, 14, 18, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--binance-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.binance-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 64px;
+}
+
+.binance-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.binance-section {
+  padding: 48px 0;
+}
+
+.binance-card {
+  background: var(--binance-dark-gray);
+  border: 1px solid var(--binance-border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  box-shadow: var(--binance-shadow);
+}
+
+.binance-card:hover {
+  border-color: var(--binance-gold);
+  box-shadow: var(--binance-shadow-lg);
+  transform: translateY(-2px);
+}
+
+.binance-button {
+  background: var(--binance-gradient);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--binance-black);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.binance-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--binance-shadow-lg);
+}
+
+.binance-button-outline {
+  background: transparent;
+  border: 1px solid var(--binance-gold);
+  color: var(--binance-gold);
+}
+
+.binance-button-outline:hover {
+  background: var(--binance-gold);
+  color: var(--binance-black);
+}
+
+/* Market Data Table Styling */
+.market-table {
+  background: var(--binance-dark-gray);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--binance-border);
+}
+
+.market-table th {
+  background: var(--binance-medium-gray);
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  color: #8b949e;
+  border-bottom: 1px solid var(--binance-border);
+}
+
+.market-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--binance-border);
+}
+
+.market-table tr:hover {
+  background: rgba(240, 185, 11, 0.05);
+}
+
+/* Stats Cards */
+.stat-card {
+  background: linear-gradient(135deg, var(--binance-dark-gray) 0%, var(--binance-medium-gray) 100%);
+  border: 1px solid var(--binance-border);
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--binance-gradient);
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--binance-gold);
+  font-family: var(--font-mono);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #8b949e;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .binance-layout {
+    padding: 0 16px;
+  }
+  .binance-header {
+    padding: 0 16px;
+  }
+  .binance-nav {
+    padding: 0 16px;
+  }
+  .binance-section {
+    padding: 32px 0;
+  }
+  .stat-number {
+    font-size: 24px;
+  }
+}
+
+/* Added custom animations for forex-style effects */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-ticker {
+  animation: ticker-scroll 60s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+/* ========================================
+   STANDARDIZED GLASSMORPHISM UTILITIES
+   ======================================== */
+
+/* Glassmorphism Header - Standard navigation for all pages */
+.glassmorphism-header {
+  background: rgba(12, 14, 18, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--binance-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+.glassmorphism-header:hover {
+  background: rgba(12, 14, 18, 0.98);
+  border-bottom-color: var(--binance-gold);
+}
+
+/* Glassmorphism Card - Standard card component for all content */
+.glassmorphism-card {
+  background: rgba(30, 32, 40, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--binance-border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  box-shadow: var(--binance-shadow);
+}
+
+.glassmorphism-card:hover {
+  background: rgba(30, 32, 40, 0.9);
+  border-color: var(--binance-gold);
+  box-shadow: var(--binance-shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism Card - Subtle variant for nested content */
+.glassmorphism-card-subtle {
+  background: rgba(30, 32, 40, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(47, 55, 70, 0.5);
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.glassmorphism-card-subtle:hover {
+  background: rgba(30, 32, 40, 0.4);
+  border-color: var(--binance-gold);
+}
+
+/* Glassmorphism Button - Standard button component */
+.glassmorphism-button {
+  background: var(--binance-gradient);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--binance-black);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--binance-shadow);
+}
+
+.glassmorphism-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--binance-shadow-lg);
+  background: linear-gradient(135deg, #fcd535 0%, #f0b90b 100%);
+}
+
+/* Glassmorphism Button - Outline variant */
+.glassmorphism-button-outline {
+  background: rgba(240, 185, 11, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--binance-gold);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--binance-gold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.glassmorphism-button-outline:hover {
+  background: var(--binance-gold);
+  color: var(--binance-black);
+  transform: translateY(-1px);
+}
+
+/* Glassmorphism Overlay - For modals and overlays */
+.glassmorphism-overlay {
+  background: rgba(12, 14, 18, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Glassmorphism Container - Main page container */
+.glassmorphism-container {
+  background: var(--binance-dark-gradient);
+  min-height: 100vh;
+  position: relative;
+}
+
+.glassmorphism-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(240, 185, 11, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}

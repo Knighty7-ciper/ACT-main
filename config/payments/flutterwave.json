@@ -1,0 +1,103 @@
+{
+  "public_key": "FLWPUBK_TEST-your-public-key",
+  "secret_key": "FLWSECK_TEST-your-secret-key",
+  "env": "test",
+  "secret_hash": "your-webhook-secret",
+  "payment_methods": {
+    "mpesa": {
+      "name": "M-PESA",
+      "countries": [
+        "KE"
+      ],
+      "currencies": [
+        "KES"
+      ],
+      "enabled": true,
+      "description": "Pay with M-PESA mobile money"
+    },
+    "mtn": {
+      "name": "MTN Mobile Money",
+      "countries": [
+        "UG",
+        "GH"
+      ],
+      "currencies": [
+        "UGX",
+        "GHS"
+      ],
+      "enabled": true,
+      "description": "Pay with MTN Mobile Money"
+    },
+    "airtel": {
+      "name": "Airtel Money",
+      "countries": [
+        "UG",
+        "TZ"
+      ],
+      "currencies": [
+        "UGX",
+        "TZS"
+      ],
+      "enabled": true,
+      "description": "Pay with Airtel Money"
+    },
+    "vodafone": {
+      "name": "Vodafone Cash",
+      "countries": [
+        "GH"
+      ],
+      "currencies": [
+        "GHS"
+      ],
+      "enabled": true,
+      "description": "Pay with Vodafone Cash"
+    },
+    "card": {
+      "name": "Credit/Debit Card",
+      "countries": [
+        "ALL"
+      ],
+      "currencies": [
+        "USD",
+        "EUR",
+        "GBP",
+        "KES",
+        "UGX",
+        "GHS"
+      ],
+      "enabled": true,
+      "description": "Pay with Visa/Mastercard"
+    },
+    "bank_transfer": {
+      "name": "Bank Transfer",
+      "countries": [
+        "ALL"
+      ],
+      "currencies": [
+        "USD",
+        "EUR",
+        "GBP",
+        "KES",
+        "UGX",
+        "GHS"
+      ],
+      "enabled": true,
+      "description": "Pay via bank transfer"
+    }
+  },
+  "limits": {
+    "mpesa_daily": 140000,
+    "mtn_daily": 200000,
+    "airtel_daily": 300000,
+    "vodafone_daily": 5000,
+    "card_daily": 100000,
+    "bank_daily": 1000000
+  },
+  "exchange_rates": {
+    "usd_to_kes": 133.5,
+    "usd_to_ugx": 3700.0,
+    "usd_to_ghs": 12.5,
+    "usd_to_tzs": 2330.0,
+    "act_token_usd": 1.24
+  }
+}

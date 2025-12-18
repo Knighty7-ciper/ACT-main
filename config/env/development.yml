@@ -1,0 +1,80 @@
+# Development Environment Configuration
+# Updated for Supabase integration and modern design
+
+# Application Settings
+APP_NAME: "PESA-AFRIK"
+APP_VERSION: "2.0.0"
+NODE_ENV: "development"
+DEBUG: true
+
+# Supabase Configuration (Primary Database)
+SUPABASE_URL: "${SUPABASE_URL}"
+SUPABASE_ANON_KEY: "${SUPABASE_ANON_KEY}"
+SUPABASE_SERVICE_ROLE_KEY: "${SUPABASE_SERVICE_ROLE_KEY}"
+
+# JWT Configuration
+JWT_SECRET: "${JWT_SECRET}"
+JWT_EXPIRATION: "7d"
+
+# Backend Configuration
+BACKEND_PORT: 3001
+BACKEND_HOST: "localhost"
+BACKEND_URL: "http://localhost:3001"
+
+# Frontend Configuration
+FRONTEND_URL: "http://localhost:3000"
+NEXT_PUBLIC_API_URL: "http://localhost:3000/api"
+NEXT_PUBLIC_BACKEND_URL: "http://localhost:3001"
+
+# Admin Panel Configuration (New Path)
+ADMIN_PATH: "/admino77"
+ADMIN_ENABLED: true
+ADMIN_ACCESS_LEVEL: "admin"
+
+# Database Configuration (Legacy - Backup)
+DATABASE_URL: "${DATABASE_URL}"
+DATABASE_HOST: "localhost"
+DATABASE_PORT: 5432
+DATABASE_USER: "postgres"
+DATABASE_PASSWORD: "postgres"
+DATABASE_NAME: "african_currency"
+
+# Stellar Network Configuration
+STELLAR_NETWORK: "TESTNET"
+STELLAR_HORIZON_URL: "https://horizon-testnet.stellar.org"
+STELLAR_SIGNING_KEY: "${STELLAR_SIGNING_KEY}"
+STELLAR_PUBLIC_KEY: "${STELLAR_PUBLIC_KEY}"
+
+# External APIs
+EXCHANGE_RATE_API_KEY: "${EXCHANGE_RATE_API_KEY}"
+GOLD_PRICE_API_KEY: "${GOLD_PRICE_API_KEY}"
+NEWS_API_KEY: "${NEWS_API_KEY}"
+
+# CORS Configuration
+CORS_ORIGIN: "http://localhost:3000"
+CORS_ENABLED: true
+
+# Email Configuration
+SMTP_HOST: "localhost"
+SMTP_PORT: 1025
+SMTP_USER: ""
+SMTP_PASSWORD: ""
+SENDER_EMAIL: "noreply@pesa-afrik.com"
+
+# Development Features
+AUTO_UPDATE_RATES: true
+DEMO_MODE: true
+ENABLE_HOT_RELOAD: true
+LOG_LEVEL: "debug"
+
+# Security Configuration
+SECURE_COOKIES: false
+TRUST_PROXY: false
+RATE_LIMIT_ENABLED: false
+
+# Feature Flags
+FEATURE_PPP_CALCULATIONS: true
+FEATURE_ADMIN_PANEL: true
+FEATURE_KYC: true
+FEATURE_NEWS: true
+FEATURE_MOBILE_APP: false

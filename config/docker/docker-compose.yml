@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  frontend:
+    image: node:18
+    working_dir: /workspace
+    command: sh -c "corepack enable && pnpm -C frontend dev"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../..:/workspace
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001/api
+  backend:
+    image: node:18
+    working_dir: /workspace
+    command: sh -c "corepack enable && pnpm -C backend dev"
+    ports:
+      - "3001:3001"
+    volumes:
+      - ../..:/workspace
+    environment:
+      - NODE_ENV=development
+      - BACKEND_PORT=3001

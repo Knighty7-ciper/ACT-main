@@ -1,0 +1,30 @@
+export const routes = {
+  home: "/",
+  login: "/auth/login",
+  signUp: "/auth/sign-up",
+  dashboard: "/dashboard",
+  wallet: "/wallet",
+  send: "/send",
+  transactions: "/transactions",
+  exchange: "/exchange",
+  currency: "/currency",
+  converter: "/converter",
+  profile: "/profile",
+  settings: "/settings",
+  kyc: "/kyc",
+  news: "/news",
+  about: "/about",
+  contact: "/contact",
+  faq: "/faq",
+  admin: {
+    dashboard: "/admin",
+    users: "/admin/users",
+    transactions: "/admin/transactions",
+    kyc: "/admin/kyc",
+    exchangeRates: "/admin/exchange-rates",
+    reserves: "/admin/reserves",
+    manageNews: "/admin/manage-news",
+  },
+} as const
+
+export type Route = typeof routes

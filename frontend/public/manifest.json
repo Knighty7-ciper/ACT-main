@@ -1,0 +1,68 @@
+{
+  "name": "ACT Platform - Pan-African Currency Exchange",
+  "short_name": "ACT Platform",
+  "description": "Official platform for Pan-African currency exchange using blockchain technology with real-time admin dashboard",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#f59e0b",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["finance", "business", "productivity"],
+  "icons": [
+    {
+      "src": "/images/logo192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Admin Dashboard",
+      "short_name": "Admin",
+      "description": "Access admin control center",
+      "url": "/admin/dashboard",
+      "icons": [{ "src": "/images/logo192.jpg", "sizes": "192x192" }]
+    },
+    {
+      "name": "User Dashboard",
+      "short_name": "Dashboard",
+      "description": "View your account dashboard",
+      "url": "/dashboard",
+      "icons": [{ "src": "/images/logo192.jpg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Wallet",
+      "short_name": "Wallet",
+      "description": "Manage your ACT wallet",
+      "url": "/wallet",
+      "icons": [{ "src": "/images/logo192.jpg", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/admin-dashboard-desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "ACT Admin Dashboard on Desktop"
+    },
+    {
+      "src": "/screenshots/admin-dashboard-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "ACT Admin Dashboard on Mobile"
+    }
+  ],
+  "dir": "ltr",
+  "prefer_related_applications": false
+}

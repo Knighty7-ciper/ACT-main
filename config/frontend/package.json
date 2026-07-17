@@ -1,0 +1,51 @@
+{
+  "name": "act-coin-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.90.1",
+    "@web3modal/wagmi": "^3.5.7",
+    "axios": "^1.6.2",
+    "fast-equals": "^6.0.0",
+    "framer-motion": "^10.16.16",
+    "lucide-react": "^0.294.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "recharts": "^2.15.4",
+    "viem": "^1.19.9",
+    "wagmi": "^1.4.7",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.16",
+    "css-loader": "^7.1.4",
+    "dotenv": "^17.2.3",
+    "dotenv-webpack": "^8.1.1",
+    "esbuild": "^0.27.2",
+    "esbuild-loader": "^4.4.2",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "parcel": "^2.16.3",
+    "postcss": "^8.4.31",
+    "postcss-loader": "^8.2.0",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.3.5",
+    "vite": "^5.4.21",
+    "webpack": "^5.105.2",
+    "webpack-cli": "^6.0.1"
+  }
+}

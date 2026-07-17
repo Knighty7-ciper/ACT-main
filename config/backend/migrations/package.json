@@ -1,0 +1,6 @@
+{
+  "name": "act-coin-migrations",
+  "version": "1.0.0",
+  "main": "run.js",
+  "type": "commonjs"
+}

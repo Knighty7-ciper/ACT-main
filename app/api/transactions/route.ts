@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
-import { db } from '@/lib/db'
 import { transactions } from '@/lib/db/schema'
-import { eq, desc, and } from 'drizzle-orm'
+import { eq, desc } from 'drizzle-orm'
 import { headers } from 'next/headers'
+
+export const dynamic = 'force-dynamic'
 
 async function getUserId() {
   const session = await auth.api.getSession({ headers: await headers() })
@@ -15,6 +16,9 @@ async function getUserId() {
 
 export async function GET(request: NextRequest) {
   try {
+    // Lazy load db to avoid build-time errors
+    const { db } = await import('@/lib/db')
+    
     const userId = await getUserId()
     const searchParams = request.nextUrl.searchParams
     const limit = parseInt(searchParams.get('limit') || '50')
@@ -58,6 +62,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    // Lazy load db to avoid build-time errors
+    const { db } = await import('@/lib/db')
+    
     const userId = await getUserId()
     const body = await request.json()
 

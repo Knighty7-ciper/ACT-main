@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/lib/db'
 import { pppData } from '@/lib/db/schema'
 import { eq, desc } from 'drizzle-orm'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
+    // Lazy load db to avoid build-time errors
+    const { db } = await import('@/lib/db')
+    
     const searchParams = request.nextUrl.searchParams
     const action = searchParams.get('action') || 'value'
     const countryCode = searchParams.get('country')

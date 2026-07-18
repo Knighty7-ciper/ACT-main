@@ -1,5 +1,8 @@
 allowBuilds:
   esbuild: true
   sharp: true
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
 minimumReleaseAgeExclude:
   - shadcn@4.13.1

@@ -1,26 +1,23 @@
 'use client'
 
+'use client'
+
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { simpleAuth, type User } from '@/lib/simple-auth'
+import { authClient } from '@/lib/auth-client'
 import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'
 
 export default function DashboardPage() {
   const router = useRouter()
-  const [user, setUser] = useState<User | null>(null)
-  const [loading, setLoading] = useState(true)
+  const { data: session, isPending } = authClient.useSession()
+  const user = session?.user
+  const loading = isPending
 
   useEffect(() => {
-    const currentUser = simpleAuth.getCurrentUser()
-    if (!currentUser) {
-      router.push('/sign-in')
-    } else {
-      setUser(currentUser)
-    }
-    setLoading(false)
-  }, [router])
+    if (!isPending && !user) router.push('/sign-in')
+  }, [isPending, user, router])
 
   if (loading || !user) {
     return (
@@ -31,7 +28,7 @@ export default function DashboardPage() {
   }
 
   const handleSignOut = () => {
-    simpleAuth.signOut()
+    authClient.signOut()
     router.push('/sign-in')
   }
 

@@ -1,5 +1,7 @@
 import { betterAuth } from 'better-auth'
-import { pool } from '@/lib/db'
+import { pool, db } from '@/lib/db'
+import { profiles } from '@/lib/db/schema'
+import { randomUUID } from 'node:crypto'
 
 function resolveBaseURL(): string {
   const url =
@@ -32,6 +34,18 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     autoSignIn: true,
+  },
+  databaseHooks: {
+    user: {
+      create: {
+        after: async (user) => {
+          await db.insert(profiles).values({
+            id: randomUUID(),
+            userId: user.id,
+          })
+        },
+      },
+    },
   },
   trustedOrigins: [
     ...(process.env.V0_RUNTIME_URL ? [process.env.V0_RUNTIME_URL] : []),

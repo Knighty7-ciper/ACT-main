@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, decimal, index, unique } from 'drizzle-orm/pg-core'
+import { pgTable, text, timestamp, decimal, index, boolean, unique } from 'drizzle-orm/pg-core'
 import { relations } from 'drizzle-orm'
 
 // Better Auth Tables
@@ -7,8 +7,8 @@ export const user = pgTable(
   {
     id: text('id').primaryKey(),
     email: text('email').unique().notNull(),
-    emailVerified: timestamp('emailVerified'),
-    name: text('name'),
+    emailVerified: boolean('emailVerified').notNull().default(false),
+    name: text('name').notNull(),
     image: text('image'),
     createdAt: timestamp('createdAt').defaultNow(),
     updatedAt: timestamp('updatedAt').defaultNow(),
@@ -38,18 +38,17 @@ export const account = pgTable(
     userId: text('userId')
       .notNull()
       .references(() => user.id, { onDelete: 'cascade' }),
-    type: text('type').notNull(),
-    provider: text('provider').notNull(),
-    providerAccountId: text('providerAccountId').notNull(),
-    refreshToken: text('refreshToken'),
+    accountId: text('accountId').notNull(),
+    providerId: text('providerId').notNull(),
     accessToken: text('accessToken'),
-    expiresAt: timestamp('expiresAt'),
-    tokenType: text('tokenType'),
-    scope: text('scope'),
+    refreshToken: text('refreshToken'),
     idToken: text('idToken'),
-    sessionState: text('sessionState'),
-    createdAt: timestamp('createdAt').defaultNow(),
-    updatedAt: timestamp('updatedAt').defaultNow(),
+    accessTokenExpiresAt: timestamp('accessTokenExpiresAt'),
+    refreshTokenExpiresAt: timestamp('refreshTokenExpiresAt'),
+    scope: text('scope'),
+    password: text('password'),
+    createdAt: timestamp('createdAt').defaultNow().notNull(),
+    updatedAt: timestamp('updatedAt').defaultNow().notNull(),
   }
 )
 
@@ -58,10 +57,10 @@ export const verification = pgTable(
   {
     id: text('id').primaryKey(),
     identifier: text('identifier').notNull(),
-    token: text('token').notNull().unique(),
-    expires: timestamp('expires').notNull(),
-    createdAt: timestamp('createdAt').defaultNow(),
-    updatedAt: timestamp('updatedAt').defaultNow(),
+    value: text('value').notNull(),
+    expiresAt: timestamp('expiresAt').notNull(),
+    createdAt: timestamp('createdAt').defaultNow().notNull(),
+    updatedAt: timestamp('updatedAt').defaultNow().notNull(),
   }
 )
 

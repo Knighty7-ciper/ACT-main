@@ -33,7 +33,11 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
       setLoading(false)
 
       if (result.error) {
-        setError(result.error.message || 'Something went wrong')
+        setError(
+          result.error.status === 500
+            ? 'Authentication is temporarily unavailable because the database is not connected. Please try again after the database is configured.'
+            : result.error.message || 'Unable to complete authentication.'
+        )
         return
       }
 

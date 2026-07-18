@@ -1,14 +1,8 @@
-import { redirect } from 'next/navigation'
-import { auth } from '@/lib/auth'
-import { headers } from 'next/headers'
 import { AuthForm } from '@/components/auth-form'
 
 export const dynamic = 'force-dynamic'
 
-export default async function SignInPage() {
-  const session = await auth.api.getSession({ headers: await headers() })
-  if (session?.user) redirect('/')
-
+export default function SignInPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center px-4">
       {/* Ambient glow effects */}

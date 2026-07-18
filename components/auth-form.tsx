@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { authClient } from '@/lib/auth-client'
+import { simpleAuth } from '@/lib/simple-auth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -12,7 +12,6 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
   const router = useRouter()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
@@ -24,14 +23,18 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
     setLoading(true)
 
     try {
-      const { error } = isSignUp
-        ? await authClient.signUp.email({ email, password, name })
-        : await authClient.signIn.email({ email, password })
+      let result
+
+      if (isSignUp) {
+        result = await simpleAuth.signUp(email, name)
+      } else {
+        result = await simpleAuth.signIn(email)
+      }
 
       setLoading(false)
 
-      if (error) {
-        setError(error.message ?? 'Something went wrong')
+      if (!result.success) {
+        setError(result.error || 'Something went wrong')
         return
       }
 
@@ -78,27 +81,7 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
         />
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="password" className="text-sm font-medium text-gray-100">
-          Password
-        </Label>
-        <Input
-          id="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder={isSignUp ? 'Min 8 characters' : 'Enter your password'}
-          required
-          minLength={8}
-          autoComplete={isSignUp ? 'new-password' : 'current-password'}
-          className="bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-400 focus:ring-blue-400/30"
-        />
-        {isSignUp && (
-          <p className="text-xs text-gray-400">
-            Must be at least 8 characters long
-          </p>
-        )}
-      </div>
+
 
       {error && (
         <div

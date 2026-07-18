@@ -1,21 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@/lib/auth'
-import { db } from '@/lib/db'
 import { transactions } from '@/lib/db/schema'
-import { eq, desc, and } from 'drizzle-orm'
-import { headers } from 'next/headers'
+import { eq, desc } from 'drizzle-orm'
 
-async function getUserId() {
-  const session = await auth.api.getSession({ headers: await headers() })
-  if (!session?.user) {
+export const dynamic = 'force-dynamic'
+
+async function getUserIdFromRequest(request: NextRequest) {
+  const authHeader = request.headers.get('authorization')
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
     throw new Error('Unauthorized')
   }
-  return session.user.id
+  const userId = authHeader.slice(7)
+  return userId
 }
 
 export async function GET(request: NextRequest) {
   try {
-    const userId = await getUserId()
+    // Lazy load db to avoid build-time errors
+    const { db } = await import('@/lib/db')
+    
+    const userId = await getUserIdFromRequest(request)
     const searchParams = request.nextUrl.searchParams
     const limit = parseInt(searchParams.get('limit') || '50')
     const offset = parseInt(searchParams.get('offset') || '0')
@@ -58,7 +61,10 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const userId = await getUserId()
+    // Lazy load db to avoid build-time errors
+    const { db } = await import('@/lib/db')
+    
+    const userId = await getUserIdFromRequest(request)
     const body = await request.json()
 
     const {

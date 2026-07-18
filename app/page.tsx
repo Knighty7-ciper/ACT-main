@@ -27,9 +27,10 @@ export default function DashboardPage() {
     )
   }
 
-  const handleSignOut = () => {
-    authClient.signOut()
-    router.push('/sign-in')
+  const handleSignOut = async () => {
+    await authClient.signOut()
+    router.replace('/sign-in')
+    router.refresh()
   }
 
   return (
